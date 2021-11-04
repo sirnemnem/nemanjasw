@@ -19,7 +19,7 @@ function getStream() {
     video: true
   };
 
-  getUserMedia(constraints, function (stream) {
+  getUserMedia(constraints, function(stream) {
     var mediaControl = document.querySelector('video');
     if ('srcObject' in mediaControl) {
       mediaControl.srcObject = stream;
@@ -29,7 +29,7 @@ function getStream() {
       mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
     }
     theStream = stream;
-  }, function (err) {
+  }, function(err) {
     alert('Error: ' + err);
   });
 }
@@ -46,11 +46,44 @@ function takePhoto() {
   }
 
   var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);
+  console.log(theImageCapturer);
+  localStorage['icon'] = theImageCapturer;
 
   theImageCapturer.takePhoto()
     .then(blob => {
       var theImageTag = document.getElementById("imageTag");
       theImageTag.src = URL.createObjectURL(blob);
+      toDataURL(theImageTag.src, function(dataUrl) {
+        //console.log('RESULT:', dataUrl)
+        localStorage['icon'] = dataUrl;
+      })
+
+      //localStorage['icon'] = theImageTag.src;
+      //document.getElementById("myicon").src = localStorage['icon'];
+
     })
     .catch(err => alert('Error: ' + err));
+}
+
+function toDataURL(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      callback(reader.result);
+    }
+    reader.readAsDataURL(xhr.response);
+  };
+  xhr.open('GET', url);
+  xhr.responseType = 'blob';
+  xhr.send();
+}
+
+
+
+function loadPhoto() {
+
+
+  //document.querySelector("#myicon").src = imageUrl;
+  document.getElementById("myicon").src = localStorage['icon'];
 }
