@@ -11,6 +11,7 @@ window.onload = function() {
 
             reader.onload = function(e) {
                 textbox.innerText = reader.result;
+                localStorage['text'] = reader.result;
             }
 
             reader.readAsText(file);
@@ -18,4 +19,11 @@ window.onload = function() {
             textbox.innerText = "Dateityp nicht unterstützt";
         }
     });
+}
+
+function loadCache() {
+
+
+  //document.querySelector("#myicon").src = imageUrl;
+  document.getElementById("textboxload").src = localStorage['text'];
 }
