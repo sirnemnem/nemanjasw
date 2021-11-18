@@ -25,5 +25,5 @@ function loadCache() {
 
 
   //document.querySelector("#myicon").src = imageUrl;
-  document.getElementById("textboxload").src = localStorage['text'];
+  document.getElementById("textboxload") = localStorage['text'];
 }
