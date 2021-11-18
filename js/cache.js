@@ -11,7 +11,7 @@ window.onload = function() {
 
             reader.onload = function(e) {
                 textbox.innerText = reader.result;
-                localStorage['text'] = reader.result;
+                localStorage['textasfuck'] = reader.result;
             }
 
             reader.readAsText(file);
