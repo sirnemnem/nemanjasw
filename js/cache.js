@@ -20,8 +20,3 @@ window.onload = function() {
         }
     });
 }
-
-function loadCache() {
-
-  document.getElementById("textboxload") = window.localStorage.getItem('text')
-}
