@@ -31,7 +31,7 @@
 
       </form>
       <h1>Datenausgabe</h1>
-      <h2>test</h2>
+      <h2>test2</h2>
       <script>
         const form = document.getElementById('eingabe')
         form.addEventListener('button', saveData)
@@ -41,7 +41,20 @@
           const date = document.getElementById('date').value
           const cat = document.getElementById('cat').value
           const number = document.getElementById('desc').value
-          console.log(desc)
+          // console.log(desc)
+
+          try {
+            //const dataFromStorage = JSON.parse(window.localStorage.getItem('data'))
+            // Test wihtout localStorage
+            let dataLoad = [
+              ['ToDoSoemthing','2021-11-11','Work', 900],
+              ['adsfd','2021-12-11','Work', 800]
+            ];
+            console.table(dataLoad);
+
+          } catch (e) {
+            console.log(e);
+          }
         }
       </script>
       <div class="container"></div>

@@ -1,4 +1,4 @@
-const staticDevCoffee = "v2.12"
+const staticDevCoffee = "v2.13"
 const assets = [
   "/",
   "/index.html",
@@ -33,7 +33,7 @@ self.addEventListener('fetch', function(event) {
 
 self.addEventListener('activate', function(event) {
 
-  var cacheAllowlist = ['v2.12'];
+  var cacheAllowlist = ['v2.13'];
 
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
