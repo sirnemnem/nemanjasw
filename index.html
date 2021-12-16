@@ -26,12 +26,12 @@
         <input type="date" id="date" />
         <input type="text" id="cat" placeholder="Kategorie" />
         <input type="number" id="value" />
-        <input type="submit" value="Submit Form" />
+        <input type="button" value="Submit Form" />
 
       </form>
       <script>
         const form = document.getElementById('eingabe')
-        form.addEventListener('submit', saveData)
+        form.addEventListener('button', saveData)
 
         function saveData(){
           const desc = document.getElementById('desc').value
