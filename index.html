@@ -21,12 +21,12 @@
   </head>
   <body>
     <main>
-      <form id="eingabe">
+      <form id="eingabe" action="#" onsubmit="saveData();return false">
         <input type="text" id="desc" placeholder="Beschreibung" />
         <input type="date" id="date" />
         <input type="text" id="cat" placeholder="Kategorie" />
         <input type="number" id="value" />
-        <input type="button" value="Submit Form" />
+        <input type="submit" value="Submit Form" />
 
       </form>
       <script>
