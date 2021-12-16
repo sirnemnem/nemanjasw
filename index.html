@@ -32,6 +32,7 @@
       </form>
       <h1>Datenausgabe</h1>
       <h2>test4</h2>
+      <button type="button" onclick="loadDataFromStorage()">Load Data from Storage</button>
       <script>
         const form = document.getElementById('eingabe')
         //form.addEventListener('button', saveData)
@@ -57,6 +58,15 @@
           } catch (e) {
             console.log(e);
           }
+        }
+        function loadDataFromStorage(){
+          try {
+            const loadedData = JSON.parse(window.localStorage.getItem('dataInStorage'));
+            console.table(loadedData);
+          } catch (e) {
+            console.log(e);
+          }
+          
         }
       </script>
       <div class="container"></div>
