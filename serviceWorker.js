@@ -1,4 +1,4 @@
-const staticDevCoffee = "v2.7"
+const staticDevCoffee = "v2.9"
 const assets = [
   "/",
   "/index.html",
@@ -6,32 +6,42 @@ const assets = [
   "/js/app.js"
 ];
 
-self.addEventListener("install", installEvent => {
-  installEvent.waitUntil(
-    caches.open(staticDevCoffee).then(cache => {
-      cache.addAll(assets);
-    })
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(staticDevCoffee)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(assets);
+      })
   );
 });
 
-self.addEventListener("fetch", fetchEvent => {
-  fetchEvent.respondWith(
-    caches.match(fetchEvent.request).then(res => {
-      return res || fetch(fetchEvent.request);
-    })
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
   );
 });
 
 self.addEventListener('activate', function(event) {
+
+  var cacheAllowlist = ['v2.8'];
+
   event.waitUntil(
-    caches.keys().then(function(staticDevCoffee) {
+    caches.keys().then(function(cacheNames) {
       return Promise.all(
-        assets.filter(function(staticDevCoffee) {
-          // Return true if you want to remove this cache,
-          // but remember that caches are shared across
-          // the whole origin
-        }).map(function(staticDevCoffee) {
-          return caches.delete(staticDevCoffee);
+        cacheNames.map(function(cacheName) {
+          if (cacheAllowlist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
         })
       );
     })
