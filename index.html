@@ -33,7 +33,7 @@
 
     </form>
     <h1>Datenausgabe</h1>
-    <h2>test4</h2>
+    <h2>test5</h2>
     <button type="button" onclick="loadDataFromStorage()">Load Data from Storage</button>
     <script>
       const form = document.getElementById('eingabe')
@@ -68,9 +68,9 @@
             [desc,date,cat,number]
           ]
           dataLoad.push([desc,date,cat,number])
+          console.log("hat geklappt")
+          console.table(dataLoad)
           window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
-        } else {
-          console.log("Speicher wurde inistaliseirt!")
         }
 
       }
