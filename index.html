@@ -49,7 +49,6 @@
 
         try {
           const dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
-          test = true
           // Test wihtout localStorage
           // let dataLoad = [
           //   ['ToDoSoemthing','2021-11-11','Work', 900],
@@ -57,7 +56,6 @@
           // ];
           dataFromStorage.push([desc, date, cat, number])
           console.table(dataFromStorage)
-          window.localStorage.removeItem('dataInStorage')
           window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
 
         } catch (e) {
