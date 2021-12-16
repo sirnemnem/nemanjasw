@@ -1,4 +1,4 @@
-const staticDevCoffee = "v2.14"
+const staticDevCoffee = "v2.15"
 const assets = [
   "/",
   "/index.html",
@@ -17,23 +17,31 @@ self.addEventListener('install', function(event) {
   );
 });
 
+
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
+    })
   );
 });
+// self.addEventListener('fetch', function(event) {
+//   event.respondWith(
+//     caches.match(event.request)
+//       .then(function(response) {
+//         // Cache hit - return response
+//         if (response) {
+//           return response;
+//         }
+//         return fetch(event.request);
+//       }
+//     )
+//   );
+// });
 
 self.addEventListener('activate', function(event) {
 
-  var cacheAllowlist = ['v2.14'];
+  var cacheAllowlist = ['v2.15'];
 
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
