@@ -31,7 +31,7 @@
 
       </form>
       <h1>Datenausgabe</h1>
-      <h2>test2</h2>
+      <h2>test3</h2>
       <script>
         const form = document.getElementById('eingabe')
         form.addEventListener('button', saveData)
@@ -50,6 +50,7 @@
               ['ToDoSoemthing','2021-11-11','Work', 900],
               ['adsfd','2021-12-11','Work', 800]
             ];
+            dataLoad.push([desc,date,cat,number])
             console.table(dataLoad);
 
           } catch (e) {
