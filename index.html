@@ -45,9 +45,11 @@
         const cat = document.getElementById('cat').value
         const number = document.getElementById('value').value
         // console.log(desc)
+        const test = false
 
         try {
-          let dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
+          const dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
+          test = true
           // Test wihtout localStorage
           // let dataLoad = [
           //   ['ToDoSoemthing','2021-11-11','Work', 900],
@@ -60,23 +62,18 @@
 
         } catch (e) {
           console.log(e)
-          let dataLoad = [
-            [desc, date, cat, number]
-          ]
-          dataFromStorage.push([desc, date, cat, number])
-          window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
-
-        } finally {
 
         }
 
-        // if (!test) {
-        //   let dataLoad = [
-        //     [desc,date,cat,number]
-        //   ]
-        //   dataFromStorage.push([desc,date,cat,number])
-        //   window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
-        // }
+        if (!test) {
+          let dataLoad = [
+            [desc,date,cat,number]
+          ]
+          dataFromStorage.push([desc,date,cat,number])
+          window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
+        } else {
+          console.log("Speicher wurde inistaliseirt!")
+        }
 
       }
 
