@@ -53,9 +53,10 @@
             //   ['adsfd','2021-12-11','Work', 800]
             // ];
             dataFromStorage.push([desc,date,cat,number])
-            console.table(dataFromStorage);
+            console.table(dataFromStorage)
+            window.localStorage.clear();
             window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
-            test = true
+            const test = true
 
           } catch (e) {
             console.log(e);
