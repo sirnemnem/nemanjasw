@@ -1,4 +1,4 @@
-const staticDevCoffee = "v2.1"
+const staticDevCoffee = "v2.3"
 const assets = [
   "/",
   "/index.html",
@@ -22,15 +22,18 @@ self.addEventListener("fetch", fetchEvent => {
   );
 });
 
-// On version update, remove old cached files
-self.addEventListener('activate', function (event) {
-	event.waitUntil(caches.keys().then(function (keys) {
-		return Promise.all(keys.filter(function (key) {
-			return !cacheIDs.includes(key);
-		}).map(function (key) {
-			return caches.delete(key);
-		}));
-	}).then(function () {
-		return self.clients.claim();
-	}));
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(assets) {
+      return Promise.all(
+        cacheNames.filter(function(assets) {
+          // Return true if you want to remove this cache,
+          // but remember that caches are shared across
+          // the whole origin
+        }).map(function(assets) {
+          return caches.delete(assets);
+        })
+      );
+    })
+  );
 });
