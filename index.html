@@ -54,7 +54,7 @@
             // ];
             dataFromStorage.push([desc,date,cat,number])
             console.table(dataFromStorage)
-            window.localStorage.clear();
+            window.localStorage.removeItem('dataInStorage')
             window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
             const test = true
 
