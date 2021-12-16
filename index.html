@@ -43,6 +43,7 @@
           const cat = document.getElementById('cat').value
           const number = document.getElementById('value').value
           // console.log(desc)
+          const test = false
 
           try {
             const dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
@@ -54,17 +55,20 @@
             dataFromStorage.push([desc,date,cat,number])
             console.table(dataFromStorage);
             window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
-            break
+            test = true
 
           } catch (e) {
             console.log(e);
           }
+          if (!test) {
+            let dataLoad = [
+              [desc,date,cat,number]
+            ]
+            window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
+          }
 
-          let dataLoad = [
-            [desc,date,cat,number]
-          ]
-          window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
         }
+
         function loadDataFromStorage(){
           try {
             const loadedData = JSON.parse(window.localStorage.getItem('dataInStorage'));
