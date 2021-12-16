@@ -57,6 +57,7 @@
           dataFromStorage.push([desc, date, cat, number])
           console.table(dataFromStorage)
           window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
+          test = true
 
         } catch (e) {
           console.log(e)
