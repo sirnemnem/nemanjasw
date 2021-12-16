@@ -1,4 +1,4 @@
-const staticDevCoffee = "v2.3"
+const staticDevCoffee = "v2.4"
 const assets = [
   "/",
   "/index.html",
@@ -26,7 +26,7 @@ self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(assets) {
       return Promise.all(
-        cacheNames.filter(function(assets) {
+        assets.filter(function(assets) {
           // Return true if you want to remove this cache,
           // but remember that caches are shared across
           // the whole origin
