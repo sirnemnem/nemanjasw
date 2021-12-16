@@ -43,10 +43,9 @@
           const cat = document.getElementById('cat').value
           const number = document.getElementById('value').value
           // console.log(desc)
-          const test = false
 
           try {
-            const dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
+            let dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
             // Test wihtout localStorage
             // let dataLoad = [
             //   ['ToDoSoemthing','2021-11-11','Work', 900],
@@ -56,18 +55,20 @@
             console.table(dataFromStorage)
             window.localStorage.removeItem('dataInStorage')
             window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
-            const test = true
 
           } catch (e) {
             console.log(e);
+          } finally {
+
           }
-          if (!test) {
-            let dataLoad = [
-              [desc,date,cat,number]
-            ]
-            dataFromStorage.push([desc,date,cat,number])
-            window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
-          }
+
+          // if (!test) {
+          //   let dataLoad = [
+          //     [desc,date,cat,number]
+          //   ]
+          //   dataFromStorage.push([desc,date,cat,number])
+          //   window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
+          // }
 
         }
 
