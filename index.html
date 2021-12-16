@@ -67,7 +67,7 @@
           const dataLoad = [
             [desc,date,cat,number]
           ]
-          dataFromStorage.push([desc,date,cat,number])
+          dataLoad.push([desc,date,cat,number])
           window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
         } else {
           console.log("Speicher wurde inistaliseirt!")
