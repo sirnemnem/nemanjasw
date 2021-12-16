@@ -1,4 +1,4 @@
-const staticDevCoffee = "v2.6"
+const staticDevCoffee = "v2.7"
 const assets = [
   "/",
   "/index.html",
@@ -9,7 +9,6 @@ const assets = [
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(staticDevCoffee).then(cache => {
-      cache.delete(assets);
       cache.addAll(assets);
     })
   );
@@ -23,18 +22,18 @@ self.addEventListener("fetch", fetchEvent => {
   );
 });
 
-// self.addEventListener('activate', function(event) {
-//   event.waitUntil(
-//     caches.keys().then(function(assets) {
-//       return Promise.all(
-//         assets.filter(function(assets) {
-//           // Return true if you want to remove this cache,
-//           // but remember that caches are shared across
-//           // the whole origin
-//         }).map(function(assets) {
-//           return caches.delete(assets);
-//         })
-//       );
-//     })
-//   );
-// });
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(staticDevCoffee) {
+      return Promise.all(
+        assets.filter(function(staticDevCoffee) {
+          // Return true if you want to remove this cache,
+          // but remember that caches are shared across
+          // the whole origin
+        }).map(function(staticDevCoffee) {
+          return caches.delete(staticDevCoffee);
+        })
+      );
+    })
+  );
+});
