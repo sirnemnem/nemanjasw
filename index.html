@@ -33,8 +33,7 @@
         const form = document.getElementById('eingabe')
         form.addEventListener('submit', saveData)
 
-        function saveData(event){
-          event.preventDefault()
+        function saveData(){
           const desc = document.getElementById('desc').value
           const date = document.getElementById('date').value
           const cat = document.getElementById('cat').value
