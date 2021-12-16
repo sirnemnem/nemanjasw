@@ -33,7 +33,7 @@
 
     </form>
     <h1>Datenausgabe</h1>
-    <h2>test6</h2>
+    <h2>test8</h2>
     <button type="button" onclick="loadDataFromStorage()">Load Data from Storage</button>
     <script>
       const form = document.getElementById('eingabe')
@@ -45,35 +45,35 @@
         const cat = document.getElementById('cat').value
         const number = document.getElementById('value').value
         // console.log(desc)
-        const test = false
+        const test = true
 
         try {
-          const dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
+          // const dataFromStorage = JSON.parse(window.localStorage.getItem('dataInStorage'))
           // Test wihtout localStorage
-          // let dataLoad = [
-          //   ['ToDoSoemthing','2021-11-11','Work', 900],
-          //   ['adsfd','2021-12-11','Work', 800]
-          // ];
+          let dataLoad = [
+            ['ToDoSoemthing','2021-11-11','Work', 900],
+            ['adsfd','2021-12-11','Work', 800]
+          ];
           dataFromStorage.push([desc, date, cat, number])
           console.table(dataFromStorage)
           window.localStorage.removeItem('dataFromStorage');
           window.localStorage.setItem('dataInStorage', JSON.stringify(dataFromStorage))
-          test = true
+
 
         } catch (e) {
           console.log(e)
 
         }
 
-        if (!test) {
-          const dataLoad = [
-            [desc,date,cat,number]
-          ]
-          dataLoad.push([desc,date,cat,number])
-          console.log("hat geklappt")
-          console.table(dataLoad)
-          window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
-        }
+        // if (!test) {
+        //   const dataLoad = [
+        //     [desc,date,cat,number]
+        //   ]
+        //   dataLoad.push([desc,date,cat,number])
+        //   console.log("hat geklappt")
+        //   console.table(dataLoad)
+        //   window.localStorage.setItem('dataInStorage', JSON.stringify(dataLoad))
+        // }
 
       }
 
